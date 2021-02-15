@@ -1,0 +1,31 @@
+* {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+section {
+  position: absolute;
+  top: 25vh;
+  left: 25vw;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.color_container {
+  height: 400px;
+  width: 250px;
+
+  border-radius: 3px;
+  padding: 20px;
+  box-shadow: 1px 1px 5px rgb(116, 116, 116);
+
+  background-color: rgb(226, 226, 226);
+}
+
+.color_box {
+  margin: 10px auto;
+
+  width: 210px;
+  height: 210px;
+
+  background-color: #fff;
+}
