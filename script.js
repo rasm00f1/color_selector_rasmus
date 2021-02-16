@@ -2,20 +2,26 @@
 
 window.addEventListener("DOMContentLoaded", getUserInput);
 
-let userInput = document.querySelector(".color_picker");
-
 function getUserInput() {
   document.querySelector(".color_picker").addEventListener("input", colorBox);
+  const input = document.querySelector(".color_picker");
+  return input.value;
 }
 
 function colorBox() {
-  console.log("colorBox");
+  const hex = getUserInput();
+  displayColor(hex);
+  displayHex(hex);
 
-  let hex = userInput.value;
-  document.querySelector(".color_box").style.backgroundColor = hex;
+  const rgbObject = hexToRbgConverter(hex);
+  displayRGB(rgbObject);
 
-  document.querySelector(".hexfield").textContent = hex;
-  hexToRbgConverter(hex);
+  const hslObject = rbgToHslConverter(rgbObject.r, rgbObject.g, rgbObject.b);
+  displayHSL(hslObject);
+
+  //just a test
+  const hex2 = rgbToHexConverter(rgbObject);
+  console.log(hex2);
 }
 
 function hexToRbgConverter(hexCode) {
@@ -26,8 +32,25 @@ function hexToRbgConverter(hexCode) {
   const hexB = hexCode.substring(5, 7);
   const b = parseInt(hexB, 16);
 
-  document.querySelector(".rgbfield").textContent = `${r}, ${g}, ${b}`;
-  rbgToHslConverter(r, g, b);
+  return { r, g, b };
+}
+
+function rgbToHexConverter(rgbObject) {
+  let hexR = rgbObject.r.toString(16);
+  let hexG = rgbObject.g.toString(16);
+  let hexB = rgbObject.b.toString(16);
+
+  if (hexR.length < 2) {
+    hexR = "0" + hexR;
+  }
+  if (hexG.length < 2) {
+    hexG = "0" + hexG;
+  }
+  if (hexB.length < 2) {
+    hexB = "0" + hexB;
+  }
+
+  return "#" + hexR + hexG + hexB;
 }
 
 function rbgToHslConverter(r, g, b) {
@@ -65,6 +88,28 @@ function rbgToHslConverter(r, g, b) {
   s *= 100;
   l *= 100;
 
-  document.querySelector(".hslfield").textContent = `${h}, ${s}, ${l}`;
   console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
+
+  return { h, s, l };
+}
+
+function rgbToCSS(rgbObject) {
+  const cssString = `rgb(${rgbObject.r}, ${rgbObject.g}, ${rgbObject.b})`;
+  return cssString;
+}
+
+function displayColor(hex) {
+  document.querySelector(".color_box").style.backgroundColor = hex;
+}
+
+function displayHex(hex) {
+  document.querySelector(".hexfield").textContent = hex;
+}
+
+function displayRGB(rgbObject) {
+  document.querySelector(".rgbfield").textContent = `${rgbObject.r}, ${rgbObject.g}, ${rgbObject.b}`;
+}
+
+function displayHSL(hslObject) {
+  document.querySelector(".hslfield").textContent = `${hslObject.h.toFixed(0)}, ${hslObject.s.toFixed(0)}, ${hslObject.l.toFixed(0)}`;
 }
