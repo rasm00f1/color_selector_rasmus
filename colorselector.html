@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="colorselector.css" />
+    <title>Color Selector</title>
+  </head>
+  <body>
+    <section>
+      <nav id="nav_css">
+        <h1 class="selector_title">COLOR SELECTOR</h1>
+
+        <div class="harmony_selector_element">
+          <label for="harmonies">Choose harmony setting:</label>
+          <select name="harmonies" id="harmony_menu">
+            <option value="analogous">Analogous</option>
+            <option value="monochromatic">Monochromatic</option>
+            <option value="triad">Triad</option>
+            <option value="complementary">Complementary</option>
+            <option value="compound">Compound</option>
+            <option value="shades">Shades</option>
+          </select>
+        </div>
+        <div class="color_selector_element">
+          <label for="color-picker">Select Color: </label>
+          <input type="color" class="color_picker" name="color-picker" />
+        </div>
+      </nav>
+
+      <div class="color_container main_color">
+        <div class="color_box"></div>
+        <div class="main_color_text">
+          <p>HEX: <span class="hexfield"></span></p>
+          <p>RGB: <span class="rgbfield"></span></p>
+          <p>HSL: <span class="hslfield"></span></p>
+        </div>
+      </div>
+
+      <div class="secondary_color_section">
+        <div class="color_container">
+          <div class="color_box"></div>
+          <div class="secondary_color_text">
+            <p>HEX: <span class="hexfield"></span></p>
+            <p>RGB: <span class="rgbfield"></span></p>
+            <p>HSL: <span class="hslfield"></span></p>
+          </div>
+        </div>
+
+        <div class="color_container">
+          <div class="color_box"></div>
+          <div class="secondary_color_text">
+            <p>HEX: <span class="hexfield"></span></p>
+            <p>RGB: <span class="rgbfield"></span></p>
+            <p>HSL: <span class="hslfield"></span></p>
+          </div>
+        </div>
+
+        <div class="color_container">
+          <div class="color_box"></div>
+          <div class="secondary_color_text">
+            <p>HEX: <span class="hexfield"></span></p>
+            <p>RGB: <span class="rgbfield"></span></p>
+            <p>HSL: <span class="hslfield"></span></p>
+          </div>
+        </div>
+
+        <div class="color_container">
+          <div class="color_box"></div>
+          <div class="secondary_color_text">
+            <p>HEX: <span class="hexfield"></span></p>
+            <p>RGB: <span class="rgbfield"></span></p>
+            <p>HSL: <span class="hslfield"></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="colorselectorscript.js"></script>
+  </body>
+</html>
