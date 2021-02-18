@@ -162,54 +162,44 @@ function getHarmony(hslObject) {
   let hslArray;
 
   if (selectedValue === "analogous") {
-    hslArray = getAnalogue(hslObject);
+    hslArray = calculateAnalogue(hslObject);
   } else if (selectedValue === "monochromatic") {
-    hslArray = getMonochromatic(hslObject);
+    hslArray = calculateMonochromatic(hslObject);
   } else if (selectedValue === "triad") {
-    hslArray = getTriad(hslObject);
+    hslArray = calculateTriad(hslObject);
   } else if (selectedValue === "complementary") {
-    hslArray = getComplementary(hslObject);
+    hslArray = calculateComplementary(hslObject);
   } else if (selectedValue === "compound") {
-    hslArray = getCompound(hslObject);
+    hslArray = calculateCompound(hslObject);
   } else if (selectedValue === "shades") {
-    hslArray = getShades(hslObject);
+    hslArray = calculateShades(hslObject);
   }
 
-  /* 
-    case "compound":
-      hslArray = getCompound(hsl);
-      break;
-
-    case "shades":
-      hslArray = getShades(hsl);
-      break;
-  }  */
-
-  // her laves et loop, så vi ikke får minusværdier. Vi arbejder med en cirkel, og derfor skal vi sætte alle hsl værdier til at være indenfor 0 og 360.
-  hslArray.forEach((element) => {
-    if (element.h < 0) {
-      element.h = element.h + 360;
+  // loop through hslObject of array, to make sure no values are negative
+  hslArray.forEach((hslObject) => {
+    if (hslObject.h < 0) {
+      hslObject.h = hslObject.h + 360;
     }
-    if (element.h > 360) {
-      element.h = element.h - 360;
+    if (hslObject.h > 360) {
+      hslObject.h = hslObject.h - 360;
     }
-    if (element.l < 0) {
-      element.l = element.l + 360;
+    if (hslObject.l < 0) {
+      hslObject.l = hslObject.l + 360;
     }
-    if (element.l > 360) {
-      element.l = element.l - 360;
+    if (hslObject.l > 360) {
+      hslObject.l = hslObject.l - 360;
     }
-    if (element.s < 0) {
-      element.s = element.s + 360;
+    if (hslObject.s < 0) {
+      hslObject.s = hslObject.s + 360;
     }
-    if (element.s > 360) {
-      element.s = element.s - 360;
+    if (hslObject.s > 360) {
+      hslObject.s = hslObject.s - 360;
     }
   });
   return hslArray;
 }
 
-function getAnalogue(hslObject) {
+function calculateAnalogue(hslObject) {
   let hslArray = new Array(5);
   let hValue = -40;
 
@@ -221,7 +211,7 @@ function getAnalogue(hslObject) {
   return hslArray;
 }
 
-function getMonochromatic(hslObject) {
+function calculateMonochromatic(hslObject) {
   let hslArray = new Array(5);
   let lValue = -20;
 
@@ -233,7 +223,7 @@ function getMonochromatic(hslObject) {
   return hslArray;
 }
 
-function getTriad(hslObject) {
+function calculateTriad(hslObject) {
   let hslArray = new Array(3);
 
   for (let i = 0; i < hslArray.length; i++) {
@@ -247,7 +237,7 @@ function getTriad(hslObject) {
   return hslArray;
 }
 
-function getComplementary(hslObject) {
+function calculateComplementary(hslObject) {
   let hslArray = new Array(5);
 
   for (let i = 0; i < hslArray.length; i++) {
@@ -261,7 +251,7 @@ function getComplementary(hslObject) {
   return hslArray;
 }
 
-function getCompound(hslObject) {
+function calculateCompound(hslObject) {
   let hslArray = new Array(5);
   let hValue = -40;
 
@@ -274,7 +264,7 @@ function getCompound(hslObject) {
   return hslArray;
 }
 
-function getShades(hslObject) {
+function calculateShades(hslObject) {
   let hslArray = new Array(5);
 
   for (let i = 0; i < hslArray.length; i++) {
