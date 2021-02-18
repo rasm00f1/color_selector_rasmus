@@ -18,22 +18,22 @@ function colorBox(color) {
 
   const hslArray = getHarmony(hslObject);
 
-  let n;
+  let arrayIndexCounter;
 
   hslArray.forEach((element) => {
     // Sending the index of the curren element
-    n = hslArray.indexOf(element) + 1;
+    arrayIndexCounter = hslArray.indexOf(element) + 1;
     // Displays the harmonies hsl values
-    displayHSL(element, n);
+    displayHSL(element, arrayIndexCounter);
 
     // Converts the hsl to rgb
     let rgbElement = hslToRgbConverter(element);
-    displayRGB(rgbElement, n);
+    displayRGB(rgbElement, arrayIndexCounter);
 
     let hexElement = rgbToHexConverter(rgbElement);
-    displayHex(hexElement, n);
+    displayHex(hexElement, arrayIndexCounter);
 
-    displayColor(hexElement, n);
+    displayColor(hexElement, arrayIndexCounter);
   });
 }
 
